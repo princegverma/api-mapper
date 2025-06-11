@@ -1,0 +1,338 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  color: #333;
+  background: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.controls button {
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.controls button:hover {
+  background: #f0f0f0;
+}
+
+.controls label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 300px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 15px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+}
+
+#endpoints-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.endpoint-item {
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.endpoint-item:hover {
+  background: #f8f8f8;
+}
+
+.endpoint-item.selected {
+  background: #e3f2fd;
+}
+
+.method {
+  font-weight: bold;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.method.get {
+  background: #61affe;
+  color: white;
+}
+
+.method.post {
+  background: #49cc90;
+  color: white;
+}
+
+.method.put {
+  background: #fca130;
+  color: white;
+}
+
+.method.delete {
+  background: #f93e3e;
+  color: white;
+}
+
+.method.patch {
+  background: #50e3c2;
+  color: white;
+}
+
+.path {
+  flex: 1;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 11px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.host {
+  font-size: 10px;
+  color: #999;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.count {
+  color: #999;
+  font-size: 11px;
+}
+
+.details {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.detail-section {
+  margin-bottom: 30px;
+}
+
+.detail-section h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+  color: #444;
+}
+
+.detail-section p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.detail-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.detail-section li {
+  margin: 5px 0;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 11px;
+}
+
+.detail-section pre {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 3px;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.calls-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.call-item {
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+
+.call-item p {
+  margin: 5px 0;
+}
+
+.call-item details {
+  margin-top: 10px;
+}
+
+.call-item summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.call-item pre {
+  background: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Filter controls */
+.search-input {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 12px;
+  width: 200px;
+}
+
+.method-filter, .host-filter {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.host-filter {
+  max-width: 200px;
+}
+
+/* Style host names in dropdown to differentiate types */
+.host-filter option {
+  padding: 2px 5px;
+}
+
+/* Highlight the current page's host */
+.host-filter option.current-host {
+  font-weight: bold;
+  color: #61affe;
+}
+
+/* Status messages */
+.status-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-size: 12px;
+  z-index: 1000;
+  transition: opacity 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.status-message.success {
+  background: #49cc90;
+  color: white;
+}
+
+.status-message.error {
+  background: #f93e3e;
+  color: white;
+}
+
+.status-message.info {
+  background: #61affe;
+  color: white;
+}
+
+/* Empty state */
+.empty-message {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Info list */
+.info-list p {
+  margin: 8px 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.info-list strong {
+  min-width: 100px;
+  display: inline-block;
+}
+
+/* Copy curl button */
+.copy-curl-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 11px;
+  background: #61affe;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.copy-curl-btn:hover {
+  background: #4e90d9;
+}

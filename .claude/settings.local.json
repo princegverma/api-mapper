@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(convert:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(jq:*)",
+      "Bash(grep:*)",
+      "Bash(node test-parameter-export.js)",
+      "Bash(node test-serialization.js)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}

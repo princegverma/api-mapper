@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>API Mapper</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>API Mapper</h1>
+      <div class="controls">
+        <button id="clear-btn">Clear</button>
+        <button id="export-btn">Export</button>
+        <label title="Include all browser headers in curl commands">
+          <input type="checkbox" id="complete-curl-checkbox">
+          Complete cURL
+        </label>
+        <label>
+          <input type="checkbox" id="record-checkbox" checked>
+          Recording
+        </label>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <div class="sidebar">
+        <h2>Endpoints</h2>
+        <div id="endpoints-list"></div>
+      </div>
+      
+      <div class="details">
+        <div id="request-details">
+          <h2>Select an endpoint to view details</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="config.js"></script>
+  <script src="panel.js"></script>
+</body>
+</html>

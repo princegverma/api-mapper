@@ -1,0 +1,4081 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Auto-generated API documentation from API Mapper"
+  },
+  "servers": [
+    {
+      "url": "https://www.boligsiden.dk"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "GET /",
+        "operationId": "get",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "summary": "POST /",
+        "operationId": "post",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/{id}/envelope/": {
+      "post": {
+        "summary": "POST /api/4506240108855296/envelope/",
+        "operationId": "postapiidenvelope",
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/pagead/ppub_config": {
+      "get": {
+        "summary": "GET /pagead/ppub_config",
+        "operationId": "getpageadppubconfig",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/gh/prebid/currency-file@1/latest.json": {
+      "get": {
+        "summary": "GET /gh/prebid/currency-file@1/latest.json",
+        "operationId": "getghprebidcurrencyfile1latestjson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/hash": {
+      "get": {
+        "summary": "GET /hash",
+        "operationId": "gethash",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/s3-json/wp_news_latest.json": {
+      "get": {
+        "summary": "GET /s3-json/wp_news_latest.json",
+        "operationId": "gets3jsonwpnewslatestjson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/s3-json/wp_navigation_footer.json": {
+      "get": {
+        "summary": "GET /s3-json/wp_navigation_footer.json",
+        "operationId": "gets3jsonwpnavigationfooterjson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/banner": {
+      "get": {
+        "summary": "GET /banner",
+        "operationId": "getbanner",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/cases": {
+      "get": {
+        "summary": "GET /search/cases",
+        "operationId": "getsearchcases",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/rentals": {
+      "get": {
+        "summary": "GET /search/rentals",
+        "operationId": "getsearchrentals",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/polls": {
+      "get": {
+        "summary": "GET /polls",
+        "operationId": "getpolls",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/municipalities": {
+      "get": {
+        "summary": "GET /municipalities",
+        "operationId": "getmunicipalities",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cases/stats": {
+      "post": {
+        "summary": "POST /cases/stats",
+        "operationId": "postcasesstats",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postcasesstatsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/promotion": {
+      "get": {
+        "summary": "GET /promotion",
+        "operationId": "getpromotion",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/favorites/v2": {
+      "get": {
+        "summary": "GET /user/favorites/v2",
+        "operationId": "getuserfavoritesv2",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/audiences": {
+      "get": {
+        "summary": "GET /audiences",
+        "operationId": "getaudiences",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cookies-declaration-lists/ViewabilityGroups.json": {
+      "get": {
+        "summary": "GET /cookies-declaration-lists/ViewabilityGroups.json",
+        "operationId": "getcookiesdeclarationlistsViewabilityGroupsjson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/previews": {
+      "get": {
+        "summary": "GET /search/previews",
+        "operationId": "getsearchpreviews",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/banner/interactions": {
+      "post": {
+        "summary": "POST /banner/interactions",
+        "operationId": "postbannerinteractions",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postbannerinteractionsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/partner/jfmsak/uid": {
+      "get": {
+        "summary": "GET /api/v2/partner/jfmsak/uid",
+        "operationId": "getapiv2partnerjfmsakuid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ccm/collect": {
+      "post": {
+        "summary": "POST /ccm/collect",
+        "operationId": "postccmcollect",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cookie_sync": {
+      "post": {
+        "summary": "POST /cookie_sync",
+        "operationId": "postcookiesync",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postcookiesyncRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openrtb2/auction": {
+      "post": {
+        "summary": "POST /openrtb2/auction",
+        "operationId": "postopenrtb2auction",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postopenrtb2auctionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/g/collect": {
+      "post": {
+        "summary": "POST /g/collect",
+        "operationId": "postgcollect",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/sse": {
+      "get": {
+        "summary": "GET /api/sse",
+        "operationId": "getapisse",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/gampad/ads": {
+      "get": {
+        "summary": "GET /gampad/ads",
+        "operationId": "getgampadads",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/activity;src=13106542;type=remar0;cat=pagev0;ord=2420906341382;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2F;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104684204~104684207;epver=2;dc_random=1749584143211;~oref=https%3A%2F%2Fwww.boligsiden.dk%2F": {
+      "post": {
+        "summary": "POST /activity;src=13106542;type=remar0;cat=pagev0;ord=2420906341382;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2F;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104684204~104684207;epver=2;dc_random=1749584143211;~oref=https%3A%2F%2Fwww.boligsiden.dk%2F",
+        "operationId": "postactivitysrc13106542typeremar0catpagev0ord2420906341382npa0auiddc2483839521743485847u1https3A2F2Fwwwboligsidendk2FgdiddMTc4Zmuaaarmuab64uafvlChromium3B136071031147CGoogle2520Chrome3B136071031147CNotA252FBrand3B99000uamb0uamuapmacOSuapv1550uaw0pscdlnoapifrm0tuKlAgtm45fe5661v9181813225z8861107538za200zb861107538gcsG111gcd13n3nPn2n5l1dmacpssyphamodma1dcfmt3tcfd10001tagexp101509157103116026103200004103233427103351869103351871104617979104617981104653070104653072104661466104661468104684204104684207epver2dcrandom1749584143211orefhttps3A2F2Fwwwboligsidendk2F",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/poll/{id}": {
+      "get": {
+        "summary": "GET /poll/15530384",
+        "operationId": "getpollid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/activity;dc_pre=CJ3j8-rM540DFcRjHgIdqMgY7A;src=13106542;type=remar0;cat=pagev0;ord=2420906341382;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2F;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104684204~104684207;epver=2;dc_random=1749584143211;~oref=https%3A%2F%2Fwww.boligsiden.dk%2F": {
+      "get": {
+        "summary": "GET /activity;dc_pre=CJ3j8-rM540DFcRjHgIdqMgY7A;src=13106542;type=remar0;cat=pagev0;ord=2420906341382;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2F;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104684204~104684207;epver=2;dc_random=1749584143211;~oref=https%3A%2F%2Fwww.boligsiden.dk%2F",
+        "operationId": "getactivitydcpreCJ3j8rM540DFcRjHgIdqMgY7Asrc13106542typeremar0catpagev0ord2420906341382npa0auiddc2483839521743485847u1https3A2F2Fwwwboligsidendk2FgdiddMTc4Zmuaaarmuab64uafvlChromium3B136071031147CGoogle2520Chrome3B136071031147CNotA252FBrand3B99000uamb0uamuapmacOSuapv1550uaw0pscdlnoapifrm0tuKlAgtm45fe5661v9181813225z8861107538za200zb861107538gcsG111gcd13n3nPn2n5l1dmacpssyphamodma1dcfmt3tcfd10001tagexp101509157103116026103200004103233427103351869103351871104617979104617981104653070104653072104661466104661468104684204104684207epver2dcrandom1749584143211orefhttps3A2F2Fwwwboligsidendk2F",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pcs/view": {
+      "get": {
+        "summary": "GET /pcs/view",
+        "operationId": "getpcsview",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pagead/gen_204": {
+      "get": {
+        "summary": "GET /pagead/gen_204",
+        "operationId": "getpageadgen204",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/collect": {
+      "post": {
+        "summary": "POST /collect",
+        "operationId": "postcollect",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/polls/{id}/answers": {
+      "get": {
+        "summary": "GET /polls/15530384/answers",
+        "operationId": "getpollsidanswers",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/agrp/prod/model_person_country_code_DK_person_region_code_4361706974616c526567696f6e6f6644656e6d61726b.json": {
+      "get": {
+        "summary": "GET /agrp/prod/model_person_country_code_DK_person_region_code_4361706974616c526567696f6e6f6644656e6d61726b.json",
+        "operationId": "getagrpprodmodelpersoncountrycodeDKpersonregioncode4361706974616c526567696f6e6f6644656e6d61726bjson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getconfig/sodar": {
+      "get": {
+        "summary": "GET /getconfig/sodar",
+        "operationId": "getgetconfigsodar",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pcs/activeview": {
+      "get": {
+        "summary": "GET /pcs/activeview",
+        "operationId": "getpcsactiveview",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/locations/cases": {
+      "get": {
+        "summary": "GET /search/locations/cases",
+        "operationId": "getsearchlocationscases",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/postnummer/{id}/vej/amager-boulevard/tilsalg": {
+      "get": {
+        "summary": "GET /postnummer/2300/vej/amager-boulevard/tilsalg",
+        "operationId": "getpostnummeridvejamagerboulevardtilsalg",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/a/api/fastlane.json": {
+      "get": {
+        "summary": "GET /a/api/fastlane.json",
+        "operationId": "getaapifastlanejson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ut/v3/prebid": {
+      "post": {
+        "summary": "POST /ut/v3/prebid",
+        "operationId": "postutv3prebid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postutv3prebidRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openrtb/pbjs": {
+      "post": {
+        "summary": "POST /openrtb/pbjs",
+        "operationId": "postopenrtbpbjs",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postopenrtbpbjsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/prebid-request": {
+      "post": {
+        "summary": "POST /prebid-request",
+        "operationId": "postprebidrequest",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postprebidrequestRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/adx/openrtb": {
+      "post": {
+        "summary": "POST /adx/openrtb",
+        "operationId": "postadxopenrtb",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postadxopenrtbRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/translator": {
+      "post": {
+        "summary": "POST /translator",
+        "operationId": "posttranslator",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/posttranslatorRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/khaos.json": {
+      "get": {
+        "summary": "GET /khaos.json",
+        "operationId": "getkhaosjson",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/list/cases": {
+      "get": {
+        "summary": "GET /search/list/cases",
+        "operationId": "getsearchlistcases",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/list/previews": {
+      "get": {
+        "summary": "GET /search/list/previews",
+        "operationId": "getsearchlistpreviews",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/provinces": {
+      "get": {
+        "summary": "GET /provinces",
+        "operationId": "getprovinces",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/kommune/koebenhavn/tilsalg/villa,ejerlejlighed,raekkehus,fritidsbolig,landejendom,andelsbolig,helaarsgrund,villalejlighed,husbaad,fritidsgrund": {
+      "get": {
+        "summary": "GET /kommune/koebenhavn/tilsalg/villa,ejerlejlighed,raekkehus,fritidsbolig,landejendom,andelsbolig,helaarsgrund,villalejlighed,husbaad,fritidsgrund",
+        "operationId": "getkommunekoebenhavntilsalgvillaejerlejlighedraekkehusfritidsboliglandejendomandelsbolighelaarsgrundvillalejlighedhusbaadfritidsgrund",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/activity;src=13106542;type=remar0;cat=pagev0;ord=1118260824025;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104698127~104698129;epver=2;dc_random=1749584267071;~oref=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1": {
+      "post": {
+        "summary": "POST /activity;src=13106542;type=remar0;cat=pagev0;ord=1118260824025;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104698127~104698129;epver=2;dc_random=1749584267071;~oref=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1",
+        "operationId": "postactivitysrc13106542typeremar0catpagev0ord1118260824025npa0auiddc2483839521743485847u1https3A2F2Fwwwboligsidendk2Fkommune2Fkoebenhavn2Ftilsalg2Fvilla2Cejerlejlighed2Craekkehus2Cfritidsbolig2Clandejendom2Candelsbolig2Chelaarsgrund2Cvillalejlighed2Chusbaad2Cfritidsgrund3FpriceMin3D310000026priceMax3D2030000026areaMin3D6026areaMax3D22026numberOfRoomsMin3D226numberOfRoomsMax3D826lotAreaMin3D150026lotAreaMax3D800026energyLabels3Db2Cc2Cd2Ce2Cf26yearBuiltFrom3D191126yearBuiltTo3D201126timeOnMarketMin3D3526timeOnMarketMax3D30226floorMin3D126floorMax3D526levelsMin3D1gdiddMTc4Zmuaaarmuab64uafvlChromium3B136071031147CGoogle2520Chrome3B136071031147CNotA252FBrand3B99000uamb0uamuapmacOSuapv1550uaw0pscdlnoapifrm0tuKlAgtm45fe5661v9181813225z8861107538za200zb861107538gcsG111gcd13n3nPn2n5l1dmacpssyphamodma1dcfmt3tcfd10001tagexp101509157103116026103200004103233427103351869103351871104617979104617981104653070104653072104661466104661468104698127104698129epver2dcrandom1749584267071orefhttps3A2F2Fwwwboligsidendk2Fkommune2Fkoebenhavn2Ftilsalg2Fvilla2Cejerlejlighed2Craekkehus2Cfritidsbolig2Clandejendom2Candelsbolig2Chelaarsgrund2Cvillalejlighed2Chusbaad2Cfritidsgrund3FpriceMin3D310000026priceMax3D2030000026areaMin3D6026areaMax3D22026numberOfRoomsMin3D226numberOfRoomsMax3D826lotAreaMin3D150026lotAreaMax3D800026energyLabels3Db2Cc2Cd2Ce2Cf26yearBuiltFrom3D191126yearBuiltTo3D201126timeOnMarketMin3D3526timeOnMarketMax3D30226floorMin3D126floorMax3D526levelsMin3D1",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/activity;dc_pre=CMO8-6XN540DFZpMHgIdxOkmSA;src=13106542;type=remar0;cat=pagev0;ord=1118260824025;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104698127~104698129;epver=2;dc_random=1749584267071;~oref=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1": {
+      "get": {
+        "summary": "GET /activity;dc_pre=CMO8-6XN540DFZpMHgIdxOkmSA;src=13106542;type=remar0;cat=pagev0;ord=1118260824025;npa=0;auiddc=248383952.1743485847;u1=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1;gdid=dMTc4Zm;uaa=arm;uab=64;uafvl=Chromium%3B136.0.7103.114%7CGoogle%2520Chrome%3B136.0.7103.114%7CNot.A%252FBrand%3B99.0.0.0;uamb=0;uam=;uap=macOS;uapv=15.5.0;uaw=0;pscdl=noapi;frm=0;_tu=KlA;gtm=45fe5661v9181813225z8861107538za200zb861107538;gcs=G111;gcd=13n3nPn2n5l1;dma_cps=syphamo;dma=1;dc_fmt=3;tcfd=10001;tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104617979~104617981~104653070~104653072~104661466~104661468~104698127~104698129;epver=2;dc_random=1749584267071;~oref=https%3A%2F%2Fwww.boligsiden.dk%2Fkommune%2Fkoebenhavn%2Ftilsalg%2Fvilla%2Cejerlejlighed%2Craekkehus%2Cfritidsbolig%2Clandejendom%2Candelsbolig%2Chelaarsgrund%2Cvillalejlighed%2Chusbaad%2Cfritidsgrund%3FpriceMin%3D3100000%26priceMax%3D20300000%26areaMin%3D60%26areaMax%3D220%26numberOfRoomsMin%3D2%26numberOfRoomsMax%3D8%26lotAreaMin%3D1500%26lotAreaMax%3D8000%26energyLabels%3Db%2Cc%2Cd%2Ce%2Cf%26yearBuiltFrom%3D1911%26yearBuiltTo%3D2011%26timeOnMarketMin%3D35%26timeOnMarketMax%3D302%26floorMin%3D1%26floorMax%3D5%26levelsMin%3D1",
+        "operationId": "getactivitydcpreCMO86XN540DFZpMHgIdxOkmSAsrc13106542typeremar0catpagev0ord1118260824025npa0auiddc2483839521743485847u1https3A2F2Fwwwboligsidendk2Fkommune2Fkoebenhavn2Ftilsalg2Fvilla2Cejerlejlighed2Craekkehus2Cfritidsbolig2Clandejendom2Candelsbolig2Chelaarsgrund2Cvillalejlighed2Chusbaad2Cfritidsgrund3FpriceMin3D310000026priceMax3D2030000026areaMin3D6026areaMax3D22026numberOfRoomsMin3D226numberOfRoomsMax3D826lotAreaMin3D150026lotAreaMax3D800026energyLabels3Db2Cc2Cd2Ce2Cf26yearBuiltFrom3D191126yearBuiltTo3D201126timeOnMarketMin3D3526timeOnMarketMax3D30226floorMin3D126floorMax3D526levelsMin3D1gdiddMTc4Zmuaaarmuab64uafvlChromium3B136071031147CGoogle2520Chrome3B136071031147CNotA252FBrand3B99000uamb0uamuapmacOSuapv1550uaw0pscdlnoapifrm0tuKlAgtm45fe5661v9181813225z8861107538za200zb861107538gcsG111gcd13n3nPn2n5l1dmacpssyphamodma1dcfmt3tcfd10001tagexp101509157103116026103200004103233427103351869103351871104617979104617981104653070104653072104661466104661468104698127104698129epver2dcrandom1749584267071orefhttps3A2F2Fwwwboligsidendk2Fkommune2Fkoebenhavn2Ftilsalg2Fvilla2Cejerlejlighed2Craekkehus2Cfritidsbolig2Clandejendom2Candelsbolig2Chelaarsgrund2Cvillalejlighed2Chusbaad2Cfritidsgrund3FpriceMin3D310000026priceMax3D2030000026areaMin3D6026areaMax3D22026numberOfRoomsMin3D226numberOfRoomsMax3D826lotAreaMin3D150026lotAreaMax3D800026energyLabels3Db2Cc2Cd2Ce2Cf26yearBuiltFrom3D191126yearBuiltTo3D201126timeOnMarketMin3D3526timeOnMarketMax3D30226floorMin3D126floorMax3D526levelsMin3D1",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/analytics/": {
+      "post": {
+        "summary": "POST /analytics/",
+        "operationId": "postanalytics",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postanalyticsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sfeeds/55f6c9c5163b58e2a8681ac3/65c1fe324000bcc2bd55f406.json": {
+      "get": {
+        "summary": "GET /sfeeds/55f6c9c5163b58e2a8681ac3/65c1fe324000bcc2bd55f406.json",
+        "operationId": "getsfeeds55f6c9c5163b58e2a8681ac365c1fe324000bcc2bd55f406json",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/log": {
+      "post": {
+        "summary": "POST /log",
+        "operationId": "postlog",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postlogRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/a/{id}/c/{id2}/content/31069-109189": {
+      "post": {
+        "summary": "POST /a/1154/c/11285/content/31069-109189",
+        "operationId": "postaidcid2content31069109189",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id2",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postaidcid2content31069109189Request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "POST /update",
+        "operationId": "postupdate",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postupdateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/custom_areas": {
+      "get": {
+        "summary": "GET /custom_areas",
+        "operationId": "getcustomareas",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/zip_codes": {
+      "get": {
+        "summary": "GET /zip_codes",
+        "operationId": "getzipcodes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lejeboliger": {
+      "get": {
+        "summary": "GET /lejeboliger",
+        "operationId": "getlejeboliger",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/search/locations/rentals": {
+      "get": {
+        "summary": "GET /search/locations/rentals",
+        "operationId": "getsearchlocationsrentals",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/postnummer/{id}/leje": {
+      "get": {
+        "summary": "GET /postnummer/2300/leje",
+        "operationId": "getpostnummeridleje",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/search/list/rentals": {
+      "get": {
+        "summary": "GET /search/list/rentals",
+        "operationId": "getsearchlistrentals",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/landsdel/koebenhavns-omegn/leje": {
+      "get": {
+        "summary": "GET /landsdel/koebenhavns-omegn/leje",
+        "operationId": "getlandsdelkoebenhavnsomegnleje",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pagead/adview": {
+      "get": {
+        "summary": "GET /pagead/adview",
+        "operationId": "getpageadadview",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/kommune/koebenhavn/leje": {
+      "get": {
+        "summary": "GET /kommune/koebenhavn/leje",
+        "operationId": "getkommunekoebenhavnleje",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/display/{id}/4961130.json": {
+      "get": {
+        "summary": "GET /display/8748461/4961130.json",
+        "operationId": "getdisplayid4961130json",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/data/cors": {
+      "post": {
+        "summary": "POST /data/cors",
+        "operationId": "postdatacors",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/lgc": {
+      "post": {
+        "summary": "POST /lgc",
+        "operationId": "postlgc",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/markedsindeks": {
+      "get": {
+        "summary": "GET /markedsindeks",
+        "operationId": "getmarkedsindeks",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "postcasesstatsRequest": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "locationType": {
+              "type": "string"
+            },
+            "locationName": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "addressType": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            },
+            "from": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "locationType",
+            "locationName",
+            "type",
+            "addressType",
+            "to",
+            "from"
+          ]
+        }
+      },
+      "postbannerinteractionsRequest": {
+        "type": "object",
+        "properties": {
+          "bannerID": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bannerID",
+          "type",
+          "source"
+        ]
+      },
+      "postcookiesyncRequest": {
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "bidders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "account": {
+            "type": "string"
+          },
+          "filterSettings": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "object",
+                "properties": {
+                  "bidders": {
+                    "type": "string"
+                  },
+                  "filter": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "bidders",
+                  "filter"
+                ]
+              },
+              "iframe": {
+                "type": "object",
+                "properties": {
+                  "bidders": {
+                    "type": "string"
+                  },
+                  "filter": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "bidders",
+                  "filter"
+                ]
+              }
+            },
+            "required": [
+              "image",
+              "iframe"
+            ]
+          },
+          "gdpr": {
+            "type": "number"
+          },
+          "gdpr_consent": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "uuid",
+          "bidders",
+          "account",
+          "filterSettings",
+          "gdpr",
+          "gdpr_consent"
+        ]
+      },
+      "postopenrtb2auctionRequest": {
+        "type": "object",
+        "properties": {
+          "imp": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ext": {
+                  "type": "object",
+                  "properties": {
+                    "gpid": {
+                      "type": "string"
+                    },
+                    "tid": {
+                      "type": "string"
+                    },
+                    "prebid": {
+                      "type": "object",
+                      "properties": {
+                        "adunitcode": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "adunitcode"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "gpid",
+                    "tid",
+                    "prebid"
+                  ]
+                },
+                "id": {
+                  "type": "string"
+                },
+                "banner": {
+                  "type": "object",
+                  "properties": {
+                    "topframe": {
+                      "type": "number"
+                    },
+                    "format": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "w": {
+                            "type": "number"
+                          },
+                          "h": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "w",
+                          "h"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "topframe",
+                    "format"
+                  ]
+                }
+              },
+              "required": [
+                "ext",
+                "id",
+                "banner"
+              ]
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "tid": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "schain": {
+                    "type": "object",
+                    "properties": {
+                      "ver": {
+                        "type": "string"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "asi": {
+                              "type": "string"
+                            },
+                            "sid": {
+                              "type": "string"
+                            },
+                            "hp": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "asi",
+                            "sid",
+                            "hp"
+                          ]
+                        }
+                      },
+                      "complete": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "ver",
+                      "nodes",
+                      "complete"
+                    ]
+                  }
+                },
+                "required": [
+                  "schain"
+                ]
+              }
+            },
+            "required": [
+              "tid",
+              "ext"
+            ]
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": "string"
+              },
+              "publisher": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "domain",
+                  "id"
+                ]
+              },
+              "page": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "limited_ads": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_contextual": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_grapeshot": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_1p_segment": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_gen": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_stda": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "limited_ads",
+                      "step_contextual",
+                      "step_grapeshot",
+                      "step_1p_segment",
+                      "ap_gen",
+                      "ap_stda"
+                    ]
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "domain",
+              "publisher",
+              "page",
+              "ext"
+            ]
+          },
+          "regs": {
+            "type": "object",
+            "properties": {
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "gdpr": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "gdpr"
+                ]
+              }
+            },
+            "required": [
+              "ext"
+            ]
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "consent": {
+                    "type": "string"
+                  },
+                  "ConsentedProvidersSettings": {
+                    "type": "object",
+                    "properties": {
+                      "consented_providers": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "consented_providers"
+                    ]
+                  }
+                },
+                "required": [
+                  "consent",
+                  "ConsentedProvidersSettings"
+                ]
+              }
+            },
+            "required": [
+              "ext"
+            ]
+          },
+          "device": {
+            "type": "object",
+            "properties": {
+              "w": {
+                "type": "number"
+              },
+              "h": {
+                "type": "number"
+              },
+              "dnt": {
+                "type": "number"
+              },
+              "ua": {
+                "type": "string"
+              },
+              "language": {
+                "type": "string"
+              },
+              "sua": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "number"
+                  },
+                  "platform": {
+                    "type": "object",
+                    "properties": {
+                      "brand": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "brand"
+                    ]
+                  },
+                  "browsers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "brand": {
+                          "type": "string"
+                        },
+                        "version": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "brand",
+                        "version"
+                      ]
+                    }
+                  },
+                  "mobile": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "source",
+                  "platform",
+                  "browsers",
+                  "mobile"
+                ]
+              }
+            },
+            "required": [
+              "w",
+              "h",
+              "dnt",
+              "ua",
+              "language",
+              "sua"
+            ]
+          },
+          "ext": {
+            "type": "object",
+            "properties": {
+              "prebid": {
+                "type": "object",
+                "properties": {
+                  "auctiontimestamp": {
+                    "type": "number"
+                  },
+                  "targeting": {
+                    "type": "object",
+                    "properties": {
+                      "includewinners": {
+                        "type": "boolean"
+                      },
+                      "includebidderkeys": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "includewinners",
+                      "includebidderkeys"
+                    ]
+                  },
+                  "rnd": {
+                    "type": "number"
+                  },
+                  "schains": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "bidders": {
+                          "type": "array",
+                          "items": {
+                            "type": "null"
+                          }
+                        },
+                        "schain": {
+                          "type": "object",
+                          "properties": {
+                            "ver": {
+                              "type": "string"
+                            },
+                            "nodes": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "asi": {
+                                    "type": "string"
+                                  },
+                                  "sid": {
+                                    "type": "string"
+                                  },
+                                  "hp": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "asi",
+                                  "sid",
+                                  "hp"
+                                ]
+                              }
+                            },
+                            "complete": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "ver",
+                            "nodes",
+                            "complete"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "bidders",
+                        "schain"
+                      ]
+                    }
+                  },
+                  "channel": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "version"
+                    ]
+                  }
+                },
+                "required": [
+                  "auctiontimestamp",
+                  "targeting",
+                  "rnd",
+                  "schains",
+                  "channel"
+                ]
+              }
+            },
+            "required": [
+              "prebid"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "test": {
+            "type": "number"
+          },
+          "cur": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tmax": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "imp",
+          "source",
+          "site",
+          "regs",
+          "user",
+          "device",
+          "ext",
+          "id",
+          "test",
+          "cur",
+          "tmax"
+        ]
+      },
+      "postutv3prebidRequest": {
+        "type": "object",
+        "properties": {
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sizes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "width",
+                      "height"
+                    ]
+                  }
+                },
+                "primary_size": {
+                  "type": "object",
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "width",
+                    "height"
+                  ]
+                },
+                "ad_types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "uuid": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "allow_smaller_sizes": {
+                  "type": "boolean"
+                },
+                "use_pmt_rule": {
+                  "type": "boolean"
+                },
+                "prebid": {
+                  "type": "boolean"
+                },
+                "disable_psa": {
+                  "type": "boolean"
+                },
+                "gpid": {
+                  "type": "string"
+                },
+                "hb_source": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "sizes",
+                "primary_size",
+                "ad_types",
+                "uuid",
+                "id",
+                "allow_smaller_sizes",
+                "use_pmt_rule",
+                "prebid",
+                "disable_psa",
+                "gpid",
+                "hb_source"
+              ]
+            }
+          },
+          "user": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "sdk": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "source",
+              "version"
+            ]
+          },
+          "schain": {
+            "type": "object",
+            "properties": {
+              "ver": {
+                "type": "string"
+              },
+              "complete": {
+                "type": "number"
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "asi": {
+                      "type": "string"
+                    },
+                    "sid": {
+                      "type": "string"
+                    },
+                    "hp": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "asi",
+                    "sid",
+                    "hp"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "ver",
+              "complete",
+              "nodes"
+            ]
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "key",
+                "value"
+              ]
+            }
+          },
+          "gdpr_consent": {
+            "type": "object",
+            "properties": {
+              "consent_string": {
+                "type": "string"
+              },
+              "consent_required": {
+                "type": "boolean"
+              },
+              "addtl_consent": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "consent_string",
+              "consent_required",
+              "addtl_consent"
+            ]
+          },
+          "referrer_detection": {
+            "type": "object",
+            "properties": {
+              "rd_ref": {
+                "type": "string"
+              },
+              "rd_top": {
+                "type": "boolean"
+              },
+              "rd_ifs": {
+                "type": "number"
+              },
+              "rd_stk": {
+                "type": "string"
+              },
+              "rd_can": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "rd_ref",
+              "rd_top",
+              "rd_ifs",
+              "rd_stk",
+              "rd_can"
+            ]
+          },
+          "eids": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source",
+                "id"
+              ]
+            }
+          }
+        },
+        "required": [
+          "tags",
+          "user",
+          "sdk",
+          "schain",
+          "keywords",
+          "gdpr_consent",
+          "referrer_detection",
+          "eids"
+        ]
+      },
+      "postopenrtbpbjsRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "publisher": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "domain"
+                ]
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "limited_ads": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_contextual": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_grapeshot": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_1p_segment": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_gen": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_stda": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "limited_ads",
+                      "step_contextual",
+                      "step_grapeshot",
+                      "step_1p_segment",
+                      "ap_gen",
+                      "ap_stda"
+                    ]
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "page",
+              "domain",
+              "publisher",
+              "ext"
+            ]
+          },
+          "ext": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "ixdiag": {
+                "type": "object",
+                "properties": {
+                  "ls": {
+                    "type": "boolean"
+                  },
+                  "mfu": {
+                    "type": "number"
+                  },
+                  "bu": {
+                    "type": "number"
+                  },
+                  "iu": {
+                    "type": "number"
+                  },
+                  "nu": {
+                    "type": "number"
+                  },
+                  "ou": {
+                    "type": "number"
+                  },
+                  "allu": {
+                    "type": "number"
+                  },
+                  "ren": {
+                    "type": "boolean"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "userIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "vpd": {
+                    "type": "boolean"
+                  },
+                  "eidLength": {
+                    "type": "number"
+                  },
+                  "tmax": {
+                    "type": "number"
+                  },
+                  "syncsPerBidder": {
+                    "type": "number"
+                  },
+                  "imps": {
+                    "type": "number"
+                  },
+                  "fpd": {
+                    "type": "boolean"
+                  },
+                  "adunitcode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "ls",
+                  "mfu",
+                  "bu",
+                  "iu",
+                  "nu",
+                  "ou",
+                  "allu",
+                  "ren",
+                  "version",
+                  "userIds",
+                  "url",
+                  "vpd",
+                  "eidLength",
+                  "tmax",
+                  "syncsPerBidder",
+                  "imps",
+                  "fpd",
+                  "adunitcode"
+                ]
+              },
+              "features": {
+                "type": "object",
+                "properties": {
+                  "pbjs_enable_multiformat": {
+                    "type": "object",
+                    "properties": {
+                      "activated": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "activated"
+                    ]
+                  },
+                  "pbjs_allow_all_eids": {
+                    "type": "object",
+                    "properties": {
+                      "activated": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "activated"
+                    ]
+                  }
+                },
+                "required": [
+                  "pbjs_enable_multiformat",
+                  "pbjs_allow_all_eids"
+                ]
+              }
+            },
+            "required": [
+              "source",
+              "ixdiag",
+              "features"
+            ]
+          },
+          "imp": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "banner": {
+                  "type": "object",
+                  "properties": {
+                    "topframe": {
+                      "type": "number"
+                    },
+                    "format": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "w": {
+                            "type": "number"
+                          },
+                          "h": {
+                            "type": "number"
+                          },
+                          "ext": {
+                            "type": "object",
+                            "properties": {
+                              "siteID": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "siteID"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "w",
+                          "h",
+                          "ext"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "topframe",
+                    "format"
+                  ]
+                },
+                "ext": {
+                  "type": "object",
+                  "properties": {
+                    "gpid": {
+                      "type": "string"
+                    },
+                    "tid": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "gpid",
+                    "tid"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "banner",
+                "ext"
+              ]
+            }
+          },
+          "at": {
+            "type": "number"
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "tid": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "schain": {
+                    "type": "object",
+                    "properties": {
+                      "ver": {
+                        "type": "string"
+                      },
+                      "complete": {
+                        "type": "number"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "asi": {
+                              "type": "string"
+                            },
+                            "sid": {
+                              "type": "string"
+                            },
+                            "hp": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "asi",
+                            "sid",
+                            "hp"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "ver",
+                      "complete",
+                      "nodes"
+                    ]
+                  }
+                },
+                "required": [
+                  "schain"
+                ]
+              }
+            },
+            "required": [
+              "tid",
+              "ext"
+            ]
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "eids": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "uids": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "ext": {
+                            "type": "object",
+                            "properties": {
+                              "linkType": {
+                                "type": "number"
+                              },
+                              "pba": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "linkType",
+                              "pba"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "ext"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "uids"
+                  ]
+                }
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "consent": {
+                    "type": "string"
+                  },
+                  "consented_providers_settings": {
+                    "type": "object",
+                    "properties": {
+                      "addtl_consent": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "addtl_consent"
+                    ]
+                  }
+                },
+                "required": [
+                  "consent",
+                  "consented_providers_settings"
+                ]
+              }
+            },
+            "required": [
+              "eids",
+              "ext"
+            ]
+          },
+          "regs": {
+            "type": "object",
+            "properties": {
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "gdpr": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "gdpr"
+                ]
+              }
+            },
+            "required": [
+              "ext"
+            ]
+          },
+          "device": {
+            "type": "object",
+            "properties": {
+              "sua": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "number"
+                  },
+                  "platform": {
+                    "type": "object",
+                    "properties": {
+                      "brand": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "brand"
+                    ]
+                  },
+                  "browsers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "brand": {
+                          "type": "string"
+                        },
+                        "version": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "brand",
+                        "version"
+                      ]
+                    }
+                  },
+                  "mobile": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "source",
+                  "platform",
+                  "browsers",
+                  "mobile"
+                ]
+              },
+              "h": {
+                "type": "number"
+              },
+              "w": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "sua",
+              "h",
+              "w"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "site",
+          "ext",
+          "imp",
+          "at",
+          "source",
+          "user",
+          "regs",
+          "device"
+        ]
+      },
+      "postprebidrequestRequest": {
+        "type": "object",
+        "properties": {
+          "bids": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "adUnitCode": {
+                  "type": "string"
+                },
+                "bidId": {
+                  "type": "string"
+                },
+                "bidderRequestId": {
+                  "type": "string"
+                },
+                "auctionId": {
+                  "type": "string"
+                },
+                "transactionId": {
+                  "type": "string"
+                },
+                "gpid": {
+                  "type": "string"
+                },
+                "pubId": {
+                  "type": "string"
+                },
+                "sizes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "width",
+                      "height"
+                    ]
+                  }
+                },
+                "type": {
+                  "type": "string"
+                },
+                "mediaTypeInfo": {
+                  "type": "object",
+                  "properties": {
+                    "sizes": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "sizes"
+                  ]
+                },
+                "priceFloors": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "adUnitCode",
+                "bidId",
+                "bidderRequestId",
+                "auctionId",
+                "transactionId",
+                "gpid",
+                "pubId",
+                "sizes",
+                "type",
+                "mediaTypeInfo",
+                "priceFloors"
+              ]
+            }
+          },
+          "location": {
+            "type": "string"
+          },
+          "referrer": {
+            "type": "null"
+          },
+          "stack": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "numIframes": {
+            "type": "number"
+          },
+          "wWidth": {
+            "type": "number"
+          },
+          "wHeight": {
+            "type": "number"
+          },
+          "oWidth": {
+            "type": "number"
+          },
+          "oHeight": {
+            "type": "number"
+          },
+          "sWidth": {
+            "type": "number"
+          },
+          "sHeight": {
+            "type": "number"
+          },
+          "aWidth": {
+            "type": "number"
+          },
+          "aHeight": {
+            "type": "number"
+          },
+          "sLeft": {
+            "type": "number"
+          },
+          "sTop": {
+            "type": "number"
+          },
+          "xOffset": {
+            "type": "number"
+          },
+          "yOffset": {
+            "type": "number"
+          },
+          "docHidden": {
+            "type": "boolean"
+          },
+          "docHeight": {
+            "type": "number"
+          },
+          "hLength": {
+            "type": "number"
+          },
+          "timing": {
+            "type": "object",
+            "properties": {
+              "pageLoadTime": {
+                "type": "number"
+              },
+              "connectTime": {
+                "type": "number"
+              },
+              "renderTime": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "pageLoadTime",
+              "connectTime",
+              "renderTime"
+            ]
+          },
+          "version": {
+            "type": "object",
+            "properties": {
+              "prebid": {
+                "type": "string"
+              },
+              "adapter": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "prebid",
+              "adapter"
+            ]
+          },
+          "gdprConsent": {
+            "type": "object",
+            "properties": {
+              "consentString": {
+                "type": "string"
+              },
+              "consentRequired": {
+                "type": "boolean"
+              },
+              "addtlConsent": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "consentString",
+              "consentRequired",
+              "addtlConsent"
+            ]
+          },
+          "ortb2": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "object",
+                "properties": {
+                  "tid": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "tid"
+                ]
+              },
+              "site": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "publisher": {
+                    "type": "object",
+                    "properties": {
+                      "domain": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "domain"
+                    ]
+                  },
+                  "page": {
+                    "type": "string"
+                  },
+                  "ext": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "limited_ads": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "step_contextual": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "step_grapeshot": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "step_1p_segment": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "ap_gen": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "ap_stda": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "limited_ads",
+                          "step_contextual",
+                          "step_grapeshot",
+                          "step_1p_segment",
+                          "ap_gen",
+                          "ap_stda"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "data"
+                    ]
+                  }
+                },
+                "required": [
+                  "domain",
+                  "publisher",
+                  "page",
+                  "ext"
+                ]
+              },
+              "regs": {
+                "type": "object",
+                "properties": {
+                  "ext": {
+                    "type": "object",
+                    "properties": {
+                      "gdpr": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "gdpr"
+                    ]
+                  }
+                },
+                "required": [
+                  "ext"
+                ]
+              },
+              "user": {
+                "type": "object",
+                "properties": {
+                  "ext": {
+                    "type": "object",
+                    "properties": {
+                      "consent": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "consent"
+                    ]
+                  }
+                },
+                "required": [
+                  "ext"
+                ]
+              },
+              "device": {
+                "type": "object",
+                "properties": {
+                  "w": {
+                    "type": "number"
+                  },
+                  "h": {
+                    "type": "number"
+                  },
+                  "dnt": {
+                    "type": "number"
+                  },
+                  "ua": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "sua": {
+                    "type": "object",
+                    "properties": {
+                      "source": {
+                        "type": "number"
+                      },
+                      "platform": {
+                        "type": "object",
+                        "properties": {
+                          "brand": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "brand"
+                        ]
+                      },
+                      "browsers": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "brand": {
+                              "type": "string"
+                            },
+                            "version": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": [
+                            "brand",
+                            "version"
+                          ]
+                        }
+                      },
+                      "mobile": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "source",
+                      "platform",
+                      "browsers",
+                      "mobile"
+                    ]
+                  }
+                },
+                "required": [
+                  "w",
+                  "h",
+                  "dnt",
+                  "ua",
+                  "language",
+                  "sua"
+                ]
+              }
+            },
+            "required": [
+              "source",
+              "site",
+              "regs",
+              "user",
+              "device"
+            ]
+          },
+          "userId": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "uids": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "atype": {
+                        "type": "number"
+                      },
+                      "ext": {
+                        "type": "object",
+                        "properties": {
+                          "linkType": {
+                            "type": "number"
+                          },
+                          "pba": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "linkType",
+                          "pba"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "atype",
+                      "ext"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "source",
+                "uids"
+              ]
+            }
+          },
+          "schain": {
+            "type": "object",
+            "properties": {
+              "ver": {
+                "type": "string"
+              },
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "asi": {
+                      "type": "string"
+                    },
+                    "sid": {
+                      "type": "string"
+                    },
+                    "hp": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "asi",
+                    "sid",
+                    "hp"
+                  ]
+                }
+              },
+              "complete": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "ver",
+              "nodes",
+              "complete"
+            ]
+          },
+          "onetagSid": {
+            "type": "string"
+          },
+          "networkConnectionType": {
+            "type": "null"
+          },
+          "networkEffectiveConnectionType": {
+            "type": "string"
+          },
+          "fledgeEnabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "bids",
+          "location",
+          "referrer",
+          "stack",
+          "numIframes",
+          "wWidth",
+          "wHeight",
+          "oWidth",
+          "oHeight",
+          "sWidth",
+          "sHeight",
+          "aWidth",
+          "aHeight",
+          "sLeft",
+          "sTop",
+          "xOffset",
+          "yOffset",
+          "docHidden",
+          "docHeight",
+          "hLength",
+          "timing",
+          "version",
+          "gdprConsent",
+          "ortb2",
+          "userId",
+          "schain",
+          "onetagSid",
+          "networkConnectionType",
+          "networkEffectiveConnectionType",
+          "fledgeEnabled"
+        ]
+      },
+      "postadxopenrtbRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": "string"
+              },
+              "publisher": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "domain"
+                ]
+              },
+              "page": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "limited_ads": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_contextual": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_grapeshot": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_1p_segment": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_gen": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_stda": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "limited_ads",
+                      "step_contextual",
+                      "step_grapeshot",
+                      "step_1p_segment",
+                      "ap_gen",
+                      "ap_stda"
+                    ]
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "domain",
+              "publisher",
+              "page",
+              "ext"
+            ]
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "consent": {
+                    "type": "string"
+                  },
+                  "eids": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "source": {
+                          "type": "string"
+                        },
+                        "uids": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "atype": {
+                                "type": "number"
+                              },
+                              "ext": {
+                                "type": "object",
+                                "properties": {
+                                  "linkType": {
+                                    "type": "number"
+                                  },
+                                  "pba": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "linkType",
+                                  "pba"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "atype",
+                              "ext"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "source",
+                        "uids"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "consent",
+                  "eids"
+                ]
+              }
+            },
+            "required": [
+              "ext"
+            ]
+          },
+          "device": {
+            "type": "object",
+            "properties": {
+              "w": {
+                "type": "number"
+              },
+              "h": {
+                "type": "number"
+              },
+              "ua": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "w",
+              "h",
+              "ua"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "tid": {
+                "type": "string"
+              },
+              "fd": {
+                "type": "number"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "schain": {
+                    "type": "object",
+                    "properties": {
+                      "ver": {
+                        "type": "string"
+                      },
+                      "complete": {
+                        "type": "number"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "asi": {
+                              "type": "string"
+                            },
+                            "sid": {
+                              "type": "string"
+                            },
+                            "hp": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "asi",
+                            "sid",
+                            "hp"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "ver",
+                      "complete",
+                      "nodes"
+                    ]
+                  }
+                },
+                "required": [
+                  "schain"
+                ]
+              }
+            },
+            "required": [
+              "tid",
+              "fd",
+              "ext"
+            ]
+          },
+          "ext": {
+            "type": "object",
+            "properties": {
+              "pt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "pt"
+            ]
+          },
+          "cur": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imp": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "tagid": {
+                  "type": "number"
+                },
+                "ext": {
+                  "type": "object",
+                  "properties": {
+                    "bidder": {
+                      "type": "object",
+                      "properties": {},
+                      "required": []
+                    }
+                  },
+                  "required": [
+                    "bidder"
+                  ]
+                },
+                "banner": {
+                  "type": "object",
+                  "properties": {
+                    "format": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "w": {
+                            "type": "number"
+                          },
+                          "h": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "w",
+                          "h"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "format"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "tagid",
+                "ext",
+                "banner"
+              ]
+            }
+          },
+          "regs": {
+            "type": "object",
+            "properties": {
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "gdpr": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "gdpr"
+                ]
+              }
+            },
+            "required": [
+              "ext"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "site",
+          "user",
+          "device",
+          "source",
+          "ext",
+          "cur",
+          "imp",
+          "regs"
+        ]
+      },
+      "posttranslatorRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "at": {
+            "type": "number"
+          },
+          "cur": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imp": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "tagid": {
+                  "type": "string"
+                },
+                "secure": {
+                  "type": "number"
+                },
+                "ext": {
+                  "type": "object",
+                  "properties": {
+                    "gpid": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "gpid"
+                  ]
+                },
+                "bidfloorcur": {
+                  "type": "string"
+                },
+                "banner": {
+                  "type": "object",
+                  "properties": {
+                    "w": {
+                      "type": "number"
+                    },
+                    "h": {
+                      "type": "number"
+                    },
+                    "format": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "w": {
+                            "type": "number"
+                          },
+                          "h": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "w",
+                          "h"
+                        ]
+                      }
+                    },
+                    "pos": {
+                      "type": "number"
+                    },
+                    "topframe": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "w",
+                    "h",
+                    "format",
+                    "pos",
+                    "topframe"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "tagid",
+                "secure",
+                "ext",
+                "bidfloorcur",
+                "banner"
+              ]
+            }
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "ref": {
+                "type": "string"
+              },
+              "publisher": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "domain": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "domain"
+                ]
+              },
+              "domain": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "limited_ads": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_contextual": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_grapeshot": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "step_1p_segment": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_gen": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ap_stda": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "limited_ads",
+                      "step_contextual",
+                      "step_grapeshot",
+                      "step_1p_segment",
+                      "ap_gen",
+                      "ap_stda"
+                    ]
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "page",
+              "ref",
+              "publisher",
+              "domain",
+              "ext"
+            ]
+          },
+          "device": {
+            "type": "object",
+            "properties": {
+              "ua": {
+                "type": "string"
+              },
+              "js": {
+                "type": "number"
+              },
+              "dnt": {
+                "type": "number"
+              },
+              "h": {
+                "type": "number"
+              },
+              "w": {
+                "type": "number"
+              },
+              "language": {
+                "type": "string"
+              },
+              "connectiontype": {
+                "type": "number"
+              },
+              "sua": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "number"
+                  },
+                  "platform": {
+                    "type": "object",
+                    "properties": {
+                      "brand": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "brand"
+                    ]
+                  },
+                  "browsers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "brand": {
+                          "type": "string"
+                        },
+                        "version": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "brand",
+                        "version"
+                      ]
+                    }
+                  },
+                  "mobile": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "source",
+                  "platform",
+                  "browsers",
+                  "mobile"
+                ]
+              }
+            },
+            "required": [
+              "ua",
+              "js",
+              "dnt",
+              "h",
+              "w",
+              "language",
+              "connectiontype",
+              "sua"
+            ]
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "geo": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "consent": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "consent"
+                ]
+              },
+              "eids": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "uids": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "atype": {
+                            "type": "number"
+                          },
+                          "ext": {
+                            "type": "object",
+                            "properties": {
+                              "linkType": {
+                                "type": "number"
+                              },
+                              "pba": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "linkType",
+                              "pba"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "atype",
+                          "ext"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "uids"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "geo",
+              "ext",
+              "eids"
+            ]
+          },
+          "ext": {
+            "type": "object",
+            "properties": {
+              "wrapper": {
+                "type": "object",
+                "properties": {
+                  "wiid": {
+                    "type": "string"
+                  },
+                  "wv": {
+                    "type": "string"
+                  },
+                  "transactionId": {
+                    "type": "string"
+                  },
+                  "wp": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "wiid",
+                  "wv",
+                  "transactionId",
+                  "wp"
+                ]
+              },
+              "epoch": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "wrapper",
+              "epoch"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "tid": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "schain": {
+                    "type": "object",
+                    "properties": {
+                      "ver": {
+                        "type": "string"
+                      },
+                      "complete": {
+                        "type": "number"
+                      },
+                      "nodes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "asi": {
+                              "type": "string"
+                            },
+                            "sid": {
+                              "type": "string"
+                            },
+                            "hp": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "asi",
+                            "sid",
+                            "hp"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "ver",
+                      "complete",
+                      "nodes"
+                    ]
+                  }
+                },
+                "required": [
+                  "schain"
+                ]
+              }
+            },
+            "required": [
+              "tid",
+              "ext"
+            ]
+          },
+          "regs": {
+            "type": "object",
+            "properties": {
+              "ext": {
+                "type": "object",
+                "properties": {
+                  "gdpr": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "gdpr"
+                ]
+              }
+            },
+            "required": [
+              "ext"
+            ]
+          },
+          "tmax": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "at",
+          "cur",
+          "imp",
+          "site",
+          "device",
+          "user",
+          "ext",
+          "source",
+          "regs",
+          "tmax"
+        ]
+      },
+      "postanalyticsRequest": {
+        "type": "object",
+        "properties": {
+          "ancestorOrigin": {
+            "type": "string"
+          },
+          "isTopWindow": {
+            "type": "boolean"
+          },
+          "isFriendly": {
+            "type": "boolean"
+          },
+          "isTouchDevice": {
+            "type": "boolean"
+          },
+          "top": {
+            "type": "number"
+          },
+          "left": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "isBatteryCharging": {
+            "type": "boolean"
+          },
+          "batteryChargingTime": {
+            "type": "null"
+          },
+          "batteryDischargingTime": {
+            "type": "number"
+          },
+          "batteryLevel": {
+            "type": "number"
+          },
+          "bidrequestId": {
+            "type": "string"
+          },
+          "impressionId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ancestorOrigin",
+          "isTopWindow",
+          "isFriendly",
+          "isTouchDevice",
+          "top",
+          "left",
+          "width",
+          "height",
+          "isBatteryCharging",
+          "batteryChargingTime",
+          "batteryDischargingTime",
+          "batteryLevel",
+          "bidrequestId",
+          "impressionId"
+        ]
+      },
+      "postlogRequest": {
+        "type": "object",
+        "properties": {
+          "adset-id": {
+            "type": "number"
+          },
+          "creative-id": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "number"
+          },
+          "success": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "adset-id",
+          "creative-id",
+          "type",
+          "duration",
+          "success"
+        ]
+      },
+      "postaidcid2content31069109189Request": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "object",
+            "properties": {
+              "$request": {
+                "type": "object",
+                "properties": {
+                  "timestamp": {
+                    "type": "string"
+                  },
+                  "gdpr-consent": {
+                    "type": "string"
+                  },
+                  "gdpr": {
+                    "type": "number"
+                  },
+                  "request-cookies": {
+                    "type": "string"
+                  },
+                  "source-url": {
+                    "type": "null"
+                  },
+                  "referrer-url": {
+                    "type": "string"
+                  },
+                  "environment": {
+                    "type": "string"
+                  },
+                  "dsp": {
+                    "type": "null"
+                  },
+                  "adserver": {
+                    "type": "string"
+                  },
+                  "encoded-user-agent": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "timestamp",
+                  "gdpr-consent",
+                  "gdpr",
+                  "request-cookies",
+                  "source-url",
+                  "referrer-url",
+                  "environment",
+                  "dsp",
+                  "adserver",
+                  "encoded-user-agent"
+                ]
+              },
+              "query-parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              },
+              "google-cm": {
+                "type": "object",
+                "properties": {
+                  "dv360-seg-id": {
+                    "type": "string"
+                  },
+                  "AD_ID": {
+                    "type": "string"
+                  },
+                  "dv360-source-url-enc": {
+                    "type": "string"
+                  },
+                  "SITE_ID": {
+                    "type": "string"
+                  },
+                  "CAMPAIGN_ID": {
+                    "type": "string"
+                  },
+                  "ADVERTISER_ID": {
+                    "type": "string"
+                  },
+                  "dv360-pub-id": {
+                    "type": "string"
+                  },
+                  "dv360-line-id": {
+                    "type": "string"
+                  },
+                  "geo": {
+                    "type": "string"
+                  },
+                  "dv360-creative-id": {
+                    "type": "string"
+                  },
+                  "CREATIVE_ID": {
+                    "type": "string"
+                  },
+                  "PLACEMENT_ID": {
+                    "type": "string"
+                  },
+                  "dv360-site-id": {
+                    "type": "string"
+                  },
+                  "dv360-io-id": {
+                    "type": "string"
+                  },
+                  "dv360-source-url": {
+                    "type": "string"
+                  },
+                  "geo-city": {
+                    "type": "string"
+                  },
+                  "geo-state": {
+                    "type": "string"
+                  },
+                  "geo-zip": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "dv360-seg-id",
+                  "AD_ID",
+                  "dv360-source-url-enc",
+                  "SITE_ID",
+                  "CAMPAIGN_ID",
+                  "ADVERTISER_ID",
+                  "dv360-pub-id",
+                  "dv360-line-id",
+                  "geo",
+                  "dv360-creative-id",
+                  "CREATIVE_ID",
+                  "PLACEMENT_ID",
+                  "dv360-site-id",
+                  "dv360-io-id",
+                  "dv360-source-url",
+                  "geo-city",
+                  "geo-state",
+                  "geo-zip"
+                ]
+              }
+            },
+            "required": [
+              "$request",
+              "query-parameters",
+              "google-cm"
+            ]
+          }
+        },
+        "required": [
+          "context"
+        ]
+      },
+      "postupdateRequest": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string"
+          },
+          "impId": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "urlCounter": {
+            "type": "number"
+          },
+          "urlHelper": {
+            "type": "string"
+          },
+          "ttl": {
+            "type": "number"
+          },
+          "isReady": {
+            "type": "boolean"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "contentId": {
+            "type": "number"
+          },
+          "duplicatePreventionEnabled": {
+            "type": "boolean"
+          },
+          "multiFormat": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "formatId": {
+                  "type": "number"
+                },
+                "sizes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "w": {
+                        "type": "number"
+                      },
+                      "h": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "w",
+                      "h"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "formatId",
+                "sizes"
+              ]
+            }
+          },
+          "paapi": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "requestId",
+          "impId",
+          "url",
+          "urlCounter",
+          "urlHelper",
+          "ttl",
+          "isReady",
+          "sessionId",
+          "contentId",
+          "duplicatePreventionEnabled",
+          "multiFormat",
+          "paapi"
+        ]
+      }
+    }
+  }
+}
