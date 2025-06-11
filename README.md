@@ -1,5 +1,7 @@
 # API Mapper - Chrome Extension
 
+<img src="favicon/android-chrome-192x192.png" width="128" height="128" alt="API Mapper Icon">
+
 A Chrome DevTools extension that automatically maps and documents APIs by monitoring network requests. It captures all API calls made by any website and exports them as OpenAPI 3.0 specification.
 
 ## Features
