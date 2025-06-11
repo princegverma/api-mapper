@@ -1,8 +1,13 @@
 let apiData = new Map();
 let selectedEndpoint = null;
+let selectedEndpoints = new Set(); // Track which endpoints are selected for export
+let endpointTags = new Map(); // Track tags for each endpoint
+let allTags = new Set(); // Track all unique tags
 let filterText = '';
-let filterMethod = 'all';
-let filterHost = 'all';
+let filterMethods = new Set(); // Changed to Set for multiple selections
+let filterHosts = new Set(); // Changed to Set for multiple host selections
+let filterTags = new Set(); // Filter by tags
+let groupByTags = false; // Toggle tag grouping
 let hostsList = new Set();
 let isConnected = false;
 let updateTimer = null;
@@ -14,7 +19,11 @@ const endpointsList = document.getElementById('endpoints-list');
 const requestDetails = document.getElementById('request-details');
 const clearBtn = document.getElementById('clear-btn');
 const exportBtn = document.getElementById('export-btn');
+const swaggerBtn = document.getElementById('swagger-btn');
 const recordCheckbox = document.getElementById('record-checkbox');
+const selectAllBtn = document.getElementById('select-all-btn');
+const selectNoneBtn = document.getElementById('select-none-btn');
+const selectionInfo = document.getElementById('selection-info');
 
 // Safe DOM creation helper
 function createElement(tag, className, textContent, attributes = {}) {
@@ -52,15 +61,40 @@ function getFilteredEndpoints() {
     });
   }
   
-  if (filterMethod !== 'all') {
+  if (filterMethods.size > 0) {
     filtered = filtered.filter(([endpoint, data]) => {
-      return data.method.toLowerCase() === filterMethod.toLowerCase();
+      return filterMethods.has(data.method.toUpperCase());
     });
   }
   
-  if (filterHost !== 'all') {
+  if (filterHosts.size > 0) {
     filtered = filtered.filter(([endpoint, data]) => {
-      return data.host === filterHost;
+      return filterHosts.has(data.host);
+    });
+  }
+  
+  if (filterTags.size > 0) {
+    filtered = filtered.filter(([endpoint, data]) => {
+      const endpointTagsSet = endpointTags.get(endpoint) || new Set();
+      // Check if endpoint has at least one of the selected tags
+      for (const tag of filterTags) {
+        if (endpointTagsSet.has(tag)) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
+  
+  // Sort by tags if grouping is enabled
+  if (groupByTags) {
+    return filtered.sort((a, b) => {
+      const tagsA = Array.from(endpointTags.get(a[0]) || new Set()).join(',');
+      const tagsB = Array.from(endpointTags.get(b[0]) || new Set()).join(',');
+      if (tagsA !== tagsB) {
+        return tagsA.localeCompare(tagsB);
+      }
+      return a[0].localeCompare(b[0]);
     });
   }
   
@@ -89,22 +123,55 @@ const updateEndpointsList = debounce(() => {
       div.classList.add('selected');
     }
     
+    // Add checkbox
+    const checkbox = createElement('input', 'endpoint-checkbox', '', {
+      type: 'checkbox',
+      'data-endpoint': endpoint
+    });
+    checkbox.checked = selectedEndpoints.has(endpoint);
+    checkbox.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent triggering the div click
+      if (e.target.checked) {
+        selectedEndpoints.add(endpoint);
+      } else {
+        selectedEndpoints.delete(endpoint);
+      }
+      updateSelectionInfo();
+    });
+    
     const methodSpan = createElement('span', `method ${data.method.toLowerCase()}`, data.method);
     const pathSpan = createElement('span', 'path', data.pathname);
     const hostSpan = createElement('span', 'host', data.host);
     const countSpan = createElement('span', 'count', `(${data.calls.length})`);
     
+    // Add tags display
+    const tagsSpan = createElement('span', 'endpoint-tags');
+    const endpointTagsSet = endpointTags.get(endpoint) || new Set();
+    endpointTagsSet.forEach(tag => {
+      const tagBadge = createElement('span', 'tag-badge', tag);
+      tagsSpan.appendChild(tagBadge);
+    });
+    
+    div.appendChild(checkbox);
     div.appendChild(methodSpan);
     div.appendChild(pathSpan);
-    if (filterHost === 'all') {
+    if (endpointTagsSet.size > 0) {
+      div.appendChild(tagsSpan);
+    }
+    if (filterHosts.size === 0 || filterHosts.size > 1) {
       div.appendChild(hostSpan);
     }
     div.appendChild(countSpan);
     
-    div.addEventListener('click', () => {
-      selectedEndpoint = endpoint;
-      updateEndpointsList();
-      showEndpointDetails(endpoint);
+    div.addEventListener('click', (e) => {
+      if (e.target.type !== 'checkbox') {
+        // If we're switching endpoints, update the list to show any tag changes
+        if (selectedEndpoint !== endpoint) {
+          updateEndpointsList();
+        }
+        selectedEndpoint = endpoint;
+        showEndpointDetails(endpoint);
+      }
     });
     
     endpointsList.appendChild(div);
@@ -118,6 +185,12 @@ function showEndpointDetails(endpoint) {
     requestDetails.textContent = 'Endpoint not found';
     return;
   }
+  
+  // Don't rebuild if we're already showing this endpoint and just updating tags
+  if (window.currentShowingEndpoint === endpoint && window.isEditingTags) {
+    return;
+  }
+  window.currentShowingEndpoint = endpoint;
   
   // Clear existing content
   while (requestDetails.firstChild) {
@@ -139,6 +212,115 @@ function showEndpointDetails(endpoint) {
   infoList.appendChild(createInfoItem('Total Calls', data.calls.length));
   generalSection.appendChild(infoList);
   requestDetails.appendChild(generalSection);
+  
+  // Tags section
+  const tagsSection = createElement('div', 'detail-section');
+  tagsSection.appendChild(createElement('h3', null, 'Tags'));
+  
+  const tagsContainer = createElement('div', 'tags-container');
+  const endpointTagsSet = endpointTags.get(endpoint) || new Set();
+  
+  // Display existing tags
+  const tagsDisplay = createElement('div', 'tags-display');
+  
+  // Define updateTagsDisplay function first
+  const updateTagsDisplay = () => {
+    // Clear existing tags
+    while (tagsDisplay.firstChild) {
+      tagsDisplay.removeChild(tagsDisplay.firstChild);
+    }
+    
+    // Re-render tags
+    const currentTags = endpointTags.get(endpoint) || new Set();
+    currentTags.forEach(tag => {
+      const tagElement = createElement('span', 'tag');
+      tagElement.textContent = tag;
+      
+      const removeBtn = createElement('button', 'tag-remove', '×');
+      removeBtn.addEventListener('click', () => {
+        removeTag(endpoint, tag);
+        updateTagsDisplay(); // Update just the tags display
+      });
+      
+      tagElement.appendChild(removeBtn);
+      tagsDisplay.appendChild(tagElement);
+    });
+  };
+  
+  // Initial render of tags
+  updateTagsDisplay();
+  
+  // Add tag input
+  const addTagContainer = createElement('div', 'add-tag-container');
+  const tagInput = createElement('input', 'tag-input', '', {
+    type: 'text',
+    placeholder: 'Add a tag...',
+    list: 'tag-suggestions'
+  });
+  
+  // Prevent any event bubbling that might cause focus loss
+  const preventFocusLoss = (e) => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  };
+  
+  tagInput.addEventListener('focus', (e) => {
+    window.isEditingTags = true;
+    preventFocusLoss(e);
+  });
+  
+  tagInput.addEventListener('blur', (e) => {
+    window.isEditingTags = false;
+  });
+  
+  tagInput.addEventListener('click', preventFocusLoss);
+  tagInput.addEventListener('mousedown', preventFocusLoss);
+  tagInput.addEventListener('mouseup', preventFocusLoss);
+  
+  
+  // Create datalist for tag suggestions
+  const datalist = createElement('datalist', null, '', { id: 'tag-suggestions' });
+  allTags.forEach(tag => {
+    const option = createElement('option', null, '', { value: tag });
+    datalist.appendChild(option);
+  });
+  
+  const addTagBtn = createElement('button', 'add-tag-btn', 'Add Tag');
+  
+  // Update the container click handler to include the button reference
+  addTagContainer.addEventListener('click', (e) => {
+    if (e.target !== tagInput && e.target !== addTagBtn) {
+      e.preventDefault();
+      tagInput.focus();
+    }
+  });
+  
+  const addTag = () => {
+    const tag = tagInput.value.trim();
+    if (tag && tag.length > 0) {
+      addTagToEndpoint(endpoint, tag);
+      tagInput.value = '';
+      // Don't refresh the whole details, just update the tags display
+      updateTagsDisplay();
+    }
+  };
+  
+  addTagBtn.addEventListener('click', addTag);
+  tagInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent form submission
+      addTag();
+    }
+  });
+  
+  addTagContainer.appendChild(tagInput);
+  addTagContainer.appendChild(datalist);
+  addTagContainer.appendChild(addTagBtn);
+  
+  tagsContainer.appendChild(tagsDisplay);
+  tagsContainer.appendChild(addTagContainer);
+  tagsSection.appendChild(tagsContainer);
+  requestDetails.appendChild(tagsSection);
   
   // Query Parameters section
   if (data.queryParams.size > 0) {
@@ -316,7 +498,16 @@ port.onMessage.addListener((msg) => {
     } else if (msg.type === "DATA_CLEARED") {
       apiData.clear();
       selectedEndpoint = null;
+      selectedEndpoints.clear();
+      endpointTags.clear();
+      allTags.clear();
+      filterTags.clear();
+      filterHosts.clear();
+      hostsList.clear();
       updateEndpointsList();
+      updateSelectionInfo();
+      updateTagFilter();
+      updateHostFilter();
       requestDetails.textContent = 'Select an endpoint to view details';
       showStatus('Data cleared', 'success');
     } else if (msg.type === "ERROR") {
@@ -359,6 +550,49 @@ chrome.runtime.onMessage.addListener((msg) => {
     }
   }
 });
+
+// Update selection info display
+function updateSelectionInfo() {
+  const count = selectedEndpoints.size;
+  const total = apiData.size;
+  selectionInfo.textContent = `${count} of ${total} selected`;
+}
+
+// Tag management functions
+function addTagToEndpoint(endpoint, tag) {
+  if (!endpointTags.has(endpoint)) {
+    endpointTags.set(endpoint, new Set());
+  }
+  endpointTags.get(endpoint).add(tag);
+  allTags.add(tag);
+  updateTagFilter();
+  // Don't update the endpoints list while editing tags - it will update when user navigates away
+}
+
+function removeTag(endpoint, tag) {
+  if (endpointTags.has(endpoint)) {
+    endpointTags.get(endpoint).delete(tag);
+    if (endpointTags.get(endpoint).size === 0) {
+      endpointTags.delete(endpoint);
+    }
+  }
+  
+  // Check if tag is still used by other endpoints
+  let tagStillUsed = false;
+  endpointTags.forEach(tags => {
+    if (tags.has(tag)) {
+      tagStillUsed = true;
+    }
+  });
+  
+  if (!tagStillUsed) {
+    allTags.delete(tag);
+    filterTags.delete(tag);
+  }
+  
+  updateTagFilter();
+  // Don't update the endpoints list while editing tags - it will update when user navigates away
+}
 
 // Show status messages
 function showStatus(message, type = 'info') {
@@ -449,7 +683,12 @@ clearBtn.addEventListener('click', () => {
 
 exportBtn.addEventListener('click', () => {
   try {
-    const openApiSpec = generateOpenApiSpec();
+    if (selectedEndpoints.size === 0) {
+      showStatus('Please select at least one endpoint to export', 'error');
+      return;
+    }
+    
+    const openApiSpec = generateOpenApiSpec(true); // Pass true to filter by selection
     
     const blob = new Blob([JSON.stringify(openApiSpec, null, 2)], 
       { type: 'application/json' });
@@ -460,16 +699,98 @@ exportBtn.addEventListener('click', () => {
     a.click();
     URL.revokeObjectURL(url);
     
-    showStatus('Export successful', 'success');
+    showStatus(`Exported ${selectedEndpoints.size} endpoints`, 'success');
   } catch (error) {
     console.error('Export error:', error);
     showStatus('Export failed', 'error');
   }
 });
 
+swaggerBtn.addEventListener('click', () => {
+  try {
+    if (selectedEndpoints.size === 0) {
+      showStatus('Please select at least one endpoint to open in Swagger', 'error');
+      return;
+    }
+    
+    const openApiSpec = generateOpenApiSpec(true); // Pass true to filter by selection
+    const specJson = JSON.stringify(openApiSpec, null, 2);
+    
+    // Fallback approach: Use a textarea to copy to clipboard
+    const copyToClipboard = (text) => {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      
+      try {
+        const success = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        return success;
+      } catch (err) {
+        document.body.removeChild(textarea);
+        return false;
+      }
+    };
+    
+    // Try to copy using the fallback method
+    const copied = copyToClipboard(specJson);
+    
+    if (copied) {
+      // Successfully copied
+      showStatus(`Copied ${selectedEndpoints.size} endpoints to clipboard!`, 'success');
+      
+      // Open Swagger Editor
+      window.open('https://editor.swagger.io/', '_blank');
+      
+      // Show instructions after a delay
+      setTimeout(() => {
+        showStatus('Paste the JSON in Swagger Editor (Ctrl/Cmd+V or File → Import)', 'info');
+      }, 2000);
+    } else {
+      // If copy fails, download the file instead
+      const blob = new Blob([specJson], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `openapi-swagger-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      
+      // Open Swagger Editor
+      window.open('https://editor.swagger.io/', '_blank');
+      
+      showStatus('Downloaded OpenAPI spec. Import it in Swagger Editor!', 'info');
+    }
+    
+  } catch (error) {
+    console.error('Swagger export error:', error);
+    showStatus(`Error: ${error.message}`, 'error');
+  }
+});
+
 recordCheckbox.addEventListener('change', (e) => {
   port.postMessage({ type: "SET_RECORDING", recording: e.target.checked });
   showStatus(e.target.checked ? 'Recording enabled' : 'Recording paused', 'info');
+});
+
+selectAllBtn.addEventListener('click', () => {
+  const filteredEndpoints = getFilteredEndpoints();
+  filteredEndpoints.forEach(([endpoint]) => {
+    selectedEndpoints.add(endpoint);
+  });
+  updateEndpointsList();
+  updateSelectionInfo();
+  showStatus('All visible endpoints selected', 'info');
+});
+
+selectNoneBtn.addEventListener('click', () => {
+  selectedEndpoints.clear();
+  updateEndpointsList();
+  updateSelectionInfo();
+  showStatus('Selection cleared', 'info');
 });
 
 // Add filter controls to header
@@ -488,111 +809,311 @@ function addFilterControls() {
     updateEndpointsList();
   });
   
-  // Host filter
-  const hostSelect = createElement('select', 'host-filter', '', {
-    id: 'host-filter',
-    title: 'Filter by host'
+  // Host filter - Multi-select dropdown
+  const hostDropdown = createElement('div', 'host-dropdown', '', {
+    id: 'host-dropdown'
   });
   
-  const allHostOption = createElement('option', null, 'All hosts', { value: 'all' });
-  hostSelect.appendChild(allHostOption);
-  
-  hostSelect.addEventListener('change', (e) => {
-    filterHost = e.target.value;
-    updateEndpointsList();
+  const hostButton = createElement('button', 'host-filter-btn', 'All hosts', {
+    type: 'button',
+    id: 'host-filter-btn'
   });
   
-  // Method filter
-  const methodSelect = createElement('select', 'method-filter', '', {
-    id: 'method-filter',
-    title: 'Filter by method'
+  const hostDropdownContent = createElement('div', 'host-dropdown-content', '', {
+    id: 'host-dropdown-content'
   });
   
-  const methods = ['all', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
+  // Function to update host filter dropdown
+  window.updateHostFilterDropdown = function() {
+    // Clear existing content
+    while (hostDropdownContent.firstChild) {
+      hostDropdownContent.removeChild(hostDropdownContent.firstChild);
+    }
+    
+    // Count calls per host
+    const hostCounts = new Map();
+    apiData.forEach((data) => {
+      const count = hostCounts.get(data.host) || 0;
+      hostCounts.set(data.host, count + data.calls.length);
+    });
+    
+    // Sort hosts by call count
+    const sortedHosts = Array.from(hostsList).sort((a, b) => {
+      const aCount = hostCounts.get(a) || 0;
+      const bCount = hostCounts.get(b) || 0;
+      if (aCount !== bCount) return bCount - aCount;
+      return a.localeCompare(b);
+    });
+    
+    sortedHosts.forEach(host => {
+      const label = createElement('label', 'host-option');
+      const checkbox = createElement('input', null, '', {
+        type: 'checkbox',
+        value: host,
+        'data-host': host
+      });
+      checkbox.checked = filterHosts.has(host);
+      
+      const count = hostCounts.get(host) || 0;
+      const endpointCount = Array.from(apiData.values()).filter(d => d.host === host).length;
+      const span = createElement('span', 'host-filter-badge');
+      span.textContent = `${host} (${endpointCount} endpoints)`;
+      
+      checkbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filterHosts.add(host);
+        } else {
+          filterHosts.delete(host);
+        }
+        updateHostButtonText();
+        updateEndpointsList();
+      });
+      
+      label.appendChild(checkbox);
+      label.appendChild(span);
+      hostDropdownContent.appendChild(label);
+    });
+  };
+  
+  hostDropdown.appendChild(hostButton);
+  hostDropdown.appendChild(hostDropdownContent);
+  
+  // Toggle dropdown
+  hostButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateHostFilterDropdown(); // Update content when opening
+    hostDropdown.classList.toggle('open');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    hostDropdown.classList.remove('open');
+  });
+  
+  hostDropdownContent.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  
+  // Update button text based on selection
+  function updateHostButtonText() {
+    if (filterHosts.size === 0) {
+      hostButton.textContent = 'All hosts';
+    } else if (filterHosts.size === hostsList.size) {
+      hostButton.textContent = 'All hosts';
+    } else if (filterHosts.size === 1) {
+      hostButton.textContent = Array.from(filterHosts)[0];
+    } else {
+      hostButton.textContent = `${filterHosts.size} hosts`;
+    }
+  }
+  
+  // Method filter - Multi-select dropdown
+  const methodDropdown = createElement('div', 'method-dropdown', '', {
+    id: 'method-dropdown'
+  });
+  
+  const methodButton = createElement('button', 'method-filter-btn', 'All methods', {
+    type: 'button',
+    id: 'method-filter-btn'
+  });
+  
+  const methodDropdownContent = createElement('div', 'method-dropdown-content', '', {
+    id: 'method-dropdown-content'
+  });
+  
+  const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
   methods.forEach(method => {
-    const option = createElement('option', null, method, { value: method.toLowerCase() });
-    methodSelect.appendChild(option);
+    const label = createElement('label', 'method-option');
+    const checkbox = createElement('input', null, '', {
+      type: 'checkbox',
+      value: method,
+      'data-method': method
+    });
+    const span = createElement('span', `method-badge ${method.toLowerCase()}`, method);
+    
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        filterMethods.add(method);
+      } else {
+        filterMethods.delete(method);
+      }
+      updateMethodButtonText();
+      updateEndpointsList();
+    });
+    
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    methodDropdownContent.appendChild(label);
   });
   
-  methodSelect.addEventListener('change', (e) => {
-    filterMethod = e.target.value;
+  methodDropdown.appendChild(methodButton);
+  methodDropdown.appendChild(methodDropdownContent);
+  
+  // Toggle dropdown
+  methodButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    methodDropdown.classList.toggle('open');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    methodDropdown.classList.remove('open');
+  });
+  
+  methodDropdownContent.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  
+  // Update button text based on selection
+  function updateMethodButtonText() {
+    if (filterMethods.size === 0) {
+      methodButton.textContent = 'All methods';
+    } else if (filterMethods.size === methods.length) {
+      methodButton.textContent = 'All methods';
+    } else {
+      methodButton.textContent = `${filterMethods.size} methods`;
+    }
+  }
+  
+  // Tag filter dropdown
+  const tagDropdown = createElement('div', 'tag-dropdown', '', {
+    id: 'tag-dropdown'
+  });
+  
+  const tagButton = createElement('button', 'tag-filter-btn', 'All tags', {
+    type: 'button',
+    id: 'tag-filter-btn'
+  });
+  
+  const tagDropdownContent = createElement('div', 'tag-dropdown-content', '', {
+    id: 'tag-dropdown-content'
+  });
+  
+  // Function to update tag filter dropdown
+  window.updateTagFilter = function() {
+    // Clear existing content
+    while (tagDropdownContent.firstChild) {
+      tagDropdownContent.removeChild(tagDropdownContent.firstChild);
+    }
+    
+    if (allTags.size === 0) {
+      const emptyMsg = createElement('div', 'tag-empty-msg', 'No tags yet');
+      tagDropdownContent.appendChild(emptyMsg);
+    } else {
+      Array.from(allTags).sort().forEach(tag => {
+        const label = createElement('label', 'tag-option');
+        const checkbox = createElement('input', null, '', {
+          type: 'checkbox',
+          value: tag,
+          'data-tag': tag
+        });
+        checkbox.checked = filterTags.has(tag);
+        
+        const span = createElement('span', 'tag-filter-badge', tag);
+        
+        checkbox.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            filterTags.add(tag);
+          } else {
+            filterTags.delete(tag);
+          }
+          updateTagButtonText();
+          updateEndpointsList();
+        });
+        
+        label.appendChild(checkbox);
+        label.appendChild(span);
+        tagDropdownContent.appendChild(label);
+      });
+    }
+  };
+  
+  // Group by tags toggle
+  const groupToggle = createElement('label', 'group-toggle');
+  const groupCheckbox = createElement('input', null, '', {
+    type: 'checkbox',
+    id: 'group-by-tags'
+  });
+  groupCheckbox.addEventListener('change', (e) => {
+    groupByTags = e.target.checked;
     updateEndpointsList();
   });
+  const groupLabel = createElement('span', null, 'Group by tags');
+  groupToggle.appendChild(groupCheckbox);
+  groupToggle.appendChild(groupLabel);
+  tagDropdownContent.appendChild(createElement('hr', 'dropdown-divider'));
+  tagDropdownContent.appendChild(groupToggle);
+  
+  tagDropdown.appendChild(tagButton);
+  tagDropdown.appendChild(tagDropdownContent);
+  
+  // Toggle dropdown
+  tagButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateTagFilter(); // Update content when opening
+    tagDropdown.classList.toggle('open');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    tagDropdown.classList.remove('open');
+  });
+  
+  tagDropdownContent.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  
+  // Update button text based on selection
+  function updateTagButtonText() {
+    if (filterTags.size === 0) {
+      tagButton.textContent = 'All tags';
+    } else if (filterTags.size === allTags.size) {
+      tagButton.textContent = 'All tags';
+    } else {
+      tagButton.textContent = `${filterTags.size} tags`;
+    }
+  }
   
   // Insert before existing controls
   controls.insertBefore(searchInput, controls.firstChild);
-  controls.insertBefore(hostSelect, searchInput.nextSibling);
-  controls.insertBefore(methodSelect, hostSelect.nextSibling);
+  controls.insertBefore(hostDropdown, searchInput.nextSibling);
+  controls.insertBefore(methodDropdown, hostDropdown.nextSibling);
+  controls.insertBefore(tagDropdown, methodDropdown.nextSibling);
 }
 
 // Update host filter dropdown
 function updateHostFilter() {
-  const hostSelect = document.getElementById('host-filter');
-  if (!hostSelect) return;
-  
-  // Save current selection
-  const currentValue = hostSelect.value;
-  
-  // Clear existing options except "All hosts"
-  while (hostSelect.options.length > 1) {
-    hostSelect.remove(1);
-  }
-  
-  // Count calls per host
-  const hostCounts = new Map();
-  apiData.forEach((data) => {
-    const count = hostCounts.get(data.host) || 0;
-    hostCounts.set(data.host, count + data.calls.length);
-  });
-  
-  // Add sorted hosts
-  const sortedHosts = Array.from(hostsList).sort((a, b) => {
-    // Sort by call count (descending)
-    const aCount = hostCounts.get(a) || 0;
-    const bCount = hostCounts.get(b) || 0;
-    if (aCount !== bCount) return bCount - aCount;
-    
-    // Then by domain importance
-    const aIsMain = !a.includes('cdn') && !a.includes('analytics') && !a.includes('google');
-    const bIsMain = !b.includes('cdn') && !b.includes('analytics') && !b.includes('google');
-    if (aIsMain && !bIsMain) return -1;
-    if (!aIsMain && bIsMain) return 1;
-    return a.localeCompare(b);
-  });
-  
-  sortedHosts.forEach(host => {
-    const count = hostCounts.get(host) || 0;
-    const endpointCount = Array.from(apiData.values()).filter(d => d.host === host).length;
-    const text = `${host} (${endpointCount} endpoints, ${count} calls)`;
-    const option = createElement('option', null, text, { value: host });
-    hostSelect.appendChild(option);
-  });
-  
-  // Restore selection if it still exists
-  if (currentValue && Array.from(hostSelect.options).some(opt => opt.value === currentValue)) {
-    hostSelect.value = currentValue;
+  // This now just triggers an update when the hosts list changes
+  if (window.updateHostFilterDropdown) {
+    window.updateHostFilterDropdown();
   }
 }
 
 // Initialize
 addFilterControls();
+updateSelectionInfo();
 
 // Update data periodically
 updateTimer = setInterval(() => {
-  if (isConnected) {
+  if (isConnected && !window.isEditingTags) {
     port.postMessage({ type: "GET_API_CALLS" });
   }
 }, CONFIG.UPDATE_INTERVAL);
 
 // OpenAPI generation functions (keep existing implementations)
-function generateOpenApiSpec() {
+function generateOpenApiSpec(filterBySelection = false) {
   const paths = {};
   const schemas = {};
-  let hostUrl = '';
+  const servers = new Set();
   
-  apiData.forEach((data, endpoint) => {
-    if (!hostUrl && data.host) {
-      hostUrl = `https://${data.host}`;
+  // Filter endpoints based on selection if requested
+  const endpointsToExport = filterBySelection 
+    ? Array.from(apiData.entries()).filter(([endpoint]) => selectedEndpoints.has(endpoint))
+    : Array.from(apiData.entries());
+  
+  endpointsToExport.forEach(([endpoint, data]) => {
+    if (data.host) {
+      servers.add(`https://${data.host}`);
     }
     
     // Collect all pathnames for this endpoint to detect variable segments
@@ -615,6 +1136,12 @@ function generateOpenApiSpec() {
       description: generateOperationDescription(data),
       responses: {}
     };
+    
+    // Add tags to the operation
+    const endpointTagsSet = endpointTags.get(endpoint) || new Set();
+    if (endpointTagsSet.size > 0) {
+      operation.tags = Array.from(endpointTagsSet);
+    }
     
     if (pathParams.params.length > 0) {
       operation.parameters = pathParams.params.map(param => ({
@@ -785,7 +1312,7 @@ function generateOpenApiSpec() {
       version: '1.0.0',
       description: 'Auto-generated API documentation from API Mapper'
     },
-    servers: hostUrl ? [{ url: hostUrl }] : [],
+    servers: Array.from(servers).sort().map(url => ({ url })),
     paths: paths,
     components: {
       schemas: schemas

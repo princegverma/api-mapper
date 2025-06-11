@@ -8,11 +8,15 @@ A Chrome DevTools extension that automatically maps and documents APIs by monito
 
 - **Real-time API Monitoring**: Captures all XHR and Fetch requests
 - **Automatic Endpoint Grouping**: Groups API calls by HTTP method and path
+- **Smart Tagging System**: Organize endpoints with custom tags for better documentation
+- **Multi-Select Filtering**: Filter by multiple HTTP methods, hosts, and tags simultaneously
 - **Parameter Detection**: Tracks query parameters and path parameters
 - **Complete Header Capture**: Records ALL request headers including User-Agent, cookies, etc.
 - **Request Body Analysis**: Analyzes JSON request body structure
 - **OpenAPI Export**: Exports captured API data as OpenAPI 3.0 specification (Swagger)
-- **Advanced Filtering**: Filter captured endpoints by host, HTTP method, or search text
+- **Direct Swagger Integration**: Open specifications directly in Swagger Editor with one click
+- **Selective Export**: Choose specific endpoints to include in your documentation
+- **Advanced Filtering**: Filter captured endpoints by host, HTTP method, tags, or search text
 - **DevTools Integration**: Adds a custom "API Mapper" panel in Chrome DevTools
 - **Recording Control**: Toggle recording on/off to control when calls are captured
 - **Security**: Automatically redacts sensitive headers and parameters
@@ -46,27 +50,58 @@ A Chrome DevTools extension that automatically maps and documents APIs by monito
    - Request body structure
    - Recent call examples
    - Response status codes
+   - Custom tags for organization
+
+### Tagging Endpoints
+
+1. Click on any endpoint to view its details
+2. In the "Tags" section, add custom tags to categorize endpoints
+3. Tags help you organize related endpoints (e.g., "auth", "user", "payment")
+4. Use the tag filter to view only endpoints with specific tags
+5. Enable "Group by tags" to sort endpoints by their tags
+
+### Selective Export
+
+1. Use the checkboxes next to each endpoint to select which ones to export
+2. Use "Select All" or "Select None" for quick selection
+3. The export will only include selected endpoints
+4. Selection info shows "X of Y selected" to track your choices
+
+### Multi-Select Filtering
+
+1. **Method Filter**: Select multiple HTTP methods to display
+2. **Host Filter**: Choose multiple hosts when working with multi-domain APIs
+3. **Tag Filter**: Filter by one or more tags
+4. All filters work together to refine your view
 
 ### Exporting API Documentation
 
-1. Click the "Export" button in the top right
-2. The extension generates an OpenAPI 3.0 specification file
-3. The file is automatically downloaded as `openapi-spec-YYYY-MM-DD.json`
-4. This file can be imported into:
-   - Swagger UI
-   - Postman
-   - API documentation tools
-   - Code generation tools
+#### Method 1: Download JSON File
+1. Select the endpoints you want to export using checkboxes
+2. Click the "Export" button
+3. The extension generates an OpenAPI 3.0 specification file
+4. The file is automatically downloaded as `openapi-spec-YYYY-MM-DD.json`
+
+#### Method 2: Open in Swagger Editor
+1. Select the endpoints you want to export
+2. Click "Open in Swagger" button
+3. The specification is copied to your clipboard
+4. Swagger Editor opens in a new tab
+5. Paste (Ctrl/Cmd+V) when Swagger Editor loads
+6. Your API documentation is instantly viewable and testable
 
 ### Controls
 
 - **Recording Toggle**: Check/uncheck to start/stop capturing API calls
 - **Clear Button**: Removes all captured data
-- **Export Button**: Downloads the OpenAPI specification
+- **Export Button**: Downloads the OpenAPI specification for selected endpoints
+- **Open in Swagger**: Opens Swagger Editor with your specification
 - **Complete cURL Toggle**: When enabled, copies curl commands with ALL browser headers
 - **Search Box**: Filter endpoints by path, host, or any text
-- **Host Filter**: Dropdown to filter by specific host (shows call counts)
-- **Method Filter**: Filter by HTTP method (GET, POST, PUT, etc.)
+- **Host Filter**: Multi-select dropdown to filter by specific hosts
+- **Method Filter**: Multi-select dropdown for HTTP methods
+- **Tag Filter**: Multi-select dropdown to filter by tags
+- **Select All/None**: Quick selection controls for export
 
 ## How It Works
 
@@ -79,6 +114,7 @@ The extension consists of several components:
    - Query parameters
    - Request body JSON structure
    - Response status codes
+   - Multiple server hosts
 
 ## OpenAPI Export Format
 
@@ -95,11 +131,15 @@ The exported specification includes complete examples and documentation:
   "servers": [
     {
       "url": "https://api.example.com"
+    },
+    {
+      "url": "https://staging.example.com"
     }
   ],
   "paths": {
     "/users/{id}": {
       "get": {
+        "tags": ["user", "public"],
         "summary": "GET /users/123",
         "operationId": "getusersid",
         "description": "Endpoint: GET /users/123\nTotal calls captured: 5\n\n## Example Requests\n\n### Example 1\n\n```bash\ncurl -X GET 'https://api.example.com/users/123?include=profile' \\\n  -H 'Accept: application/json'\n```\n\n**Response Status:** 200\n\n## Query Parameters\n\n- `include`\n- `fields`\n",
@@ -153,9 +193,11 @@ The exported specification includes complete examples and documentation:
 - **Request body examples**: POST/PUT/PATCH requests include complete JSON payloads
 - **Query parameter documentation**: All observed query parameters are listed with examples
 - **Automatic path parameter detection**: Numeric IDs and UUIDs are automatically detected and documented
-- **Smart filtering**: Filter captured endpoints by host to focus on specific APIs and reduce noise
+- **Smart filtering**: Filter captured endpoints by multiple criteria simultaneously
 - **Memory management**: Automatic cleanup of old data (configurable limits)
 - **Security redaction**: Automatic masking of sensitive data in headers and parameters
+- **Tag-based organization**: Group related endpoints with custom tags
+- **Multi-server support**: Properly documents APIs spanning multiple hosts
 
 ## Configuration
 
@@ -193,6 +235,7 @@ The generated OpenAPI spec should be valid, but if you encounter validation erro
 - **Memory usage**: The extension automatically limits stored data to prevent performance issues
 - **"Recording" checkbox unchecked**: The extension only captures calls when recording is enabled
 - **Copy cURL not working**: Make sure to click the "Copy cURL" button for individual calls in the details view
+- **Tag input issues**: The tag input field is isolated from UI updates to ensure smooth typing
 
 ## Privacy
 
@@ -212,7 +255,8 @@ api-mapper/
 ├── panel.html            # Panel UI structure
 ├── panel.js              # Panel functionality
 ├── panel.css             # Panel styling
-└── favicon/              # Extension icons
+├── favicon/              # Extension icons
+└── CLAUDE.md             # AI assistant instructions
 ```
 
 ### Building from Source
@@ -226,3 +270,7 @@ MIT License
 ## Contributing
 
 Feel free to submit issues and enhancement requests!
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and updates.

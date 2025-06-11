@@ -8,10 +8,14 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>API Mapper</h1>
+      <h1><img src="favicon/favicon-32x32.png" alt="API Mapper" class="logo">API Mapper</h1>
       <div class="controls">
         <button id="clear-btn">Clear</button>
         <button id="export-btn">Export</button>
+        <button id="swagger-btn" class="has-tooltip">
+          Open in Swagger
+          <span class="tooltip">Opens Swagger Editor and copies API spec to clipboard. Just paste (Ctrl/Cmd+V) when it opens!</span>
+        </button>
         <label title="Include all browser headers in curl commands">
           <input type="checkbox" id="complete-curl-checkbox">
           Complete cURL
@@ -25,7 +29,14 @@
     
     <div class="main-content">
       <div class="sidebar">
-        <h2>Endpoints</h2>
+        <div class="sidebar-header">
+          <h2>Endpoints</h2>
+          <div class="selection-controls">
+            <button id="select-all-btn" class="small-btn">Select All</button>
+            <button id="select-none-btn" class="small-btn">Select None</button>
+            <span id="selection-info" class="selection-info">0 selected</span>
+          </div>
+        </div>
         <div id="endpoints-list"></div>
       </div>
       
