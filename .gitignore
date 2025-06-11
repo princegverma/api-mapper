@@ -31,6 +31,7 @@ npm-debug.log*
 .idea/
 *.swp
 *.swo
+.claude/
 
 # Temporary files
 *.tmp
@@ -43,3 +44,10 @@ npm-debug.log*
 # Chrome Extension specific
 *.pem
 *.crx
+
+# Development artifacts
+data/
+*.bak
+*-fixed.*
+*-old.*
+test-*.js
